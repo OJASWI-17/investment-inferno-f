@@ -33,12 +33,7 @@ export default function OrderHistory() {
     }
     
     // Initial fetch and set up polling
-    useEffect(() => {
-        fetchOrders() // Initial load
-        const interval = setInterval(fetchOrders, 30000) // Update every 30 seconds
-        
-        return () => clearInterval(interval) // Clean up on unmount
-    }, [])
+    fetchOrders() 
     
 
     // Filter and search orders

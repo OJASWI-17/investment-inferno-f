@@ -111,7 +111,7 @@ export default function Portfolio() {
       console.error('Error fetching live prices:', error);
       // Optionally redirect to login if unauthorized
       if (error.message.includes('401')) {
-        window.location.href = '/login';
+        window.location.href = '/signin';
       }
     }
   };
@@ -121,7 +121,7 @@ export default function Portfolio() {
   // Set up polling for live prices
   useEffect(() => {
     fetchLivePrices() // Initial fetch
-    const interval = setInterval(fetchLivePrices, 1000) // Update every second
+    const interval = setInterval(fetchLivePrices, 20000) // Update every 20 second
     
     return () => clearInterval(interval) // Clean up on unmount
   }, []) // Re-run if session changes

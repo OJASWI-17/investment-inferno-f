@@ -250,6 +250,7 @@ export default function CandleStickChart({ stockSymbol, height, upColor, downCol
           return index === 0 || item.time !== arr[index - 1].time;
         });
   
+        console.log("Unique Data:", jsonData);
       
       if (data.length === 0) {
         candleSeriesRef.current.setData(uniqueData);
@@ -282,7 +283,7 @@ export default function CandleStickChart({ stockSymbol, height, upColor, downCol
   // Setup interval for data updates
   useEffect(() => {
     fetchStockData();
-    const interval = setInterval(fetchStockData, 2000);
+    const interval = setInterval(fetchStockData, 40000);
     return () => clearInterval(interval);
   }, [stockSymbol]);
 

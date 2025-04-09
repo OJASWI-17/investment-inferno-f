@@ -48,7 +48,7 @@ export default function Leaderboard() {
 
   useEffect(() => {
     fetchLeaderboard();
-    const interval = setInterval(fetchLeaderboard, 5000); // Auto-refresh every second
+    const interval = setInterval(fetchLeaderboard, 10000); // Auto-refresh every 10 second
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
 

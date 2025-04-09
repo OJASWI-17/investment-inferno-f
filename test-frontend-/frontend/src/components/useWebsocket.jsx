@@ -32,7 +32,7 @@ const useWebSocket = (roomName) => {
 
             for (const [ticker, values] of Object.entries(data)) {
                 const elements = {
-                    price: document.getElementById(`${ticker}_price`),
+                    close: document.getElementById(`${ticker}_close`),
                     open: document.getElementById(`${ticker}_open`),
                     high: document.getElementById(`${ticker}_high`),
                     low: document.getElementById(`${ticker}_low`),
@@ -41,7 +41,7 @@ const useWebSocket = (roomName) => {
 
                 for (const [key, element] of Object.entries(elements)) {
                     if (element && values[key] !== undefined) {
-                        if (key === 'price' && element.dataset.prevValue) {
+                        if (key === 'close' && element.dataset.prevValue) {
                             const prevValue = parseFloat(element.dataset.prevValue);
                             const currentValue = parseFloat(values[key]);
                             element.classList.remove('text-red-500', 'text-green-500');
@@ -52,7 +52,7 @@ const useWebSocket = (roomName) => {
                             }
                         }
                         element.textContent = values[key];
-                        if (key === 'price') {
+                        if (key === 'close') {
                             element.dataset.prevValue = values[key];
                         }
                     }

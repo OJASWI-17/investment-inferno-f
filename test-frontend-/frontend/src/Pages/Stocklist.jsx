@@ -29,7 +29,7 @@ const Stocklist = () => {
                 
 
                 if (response.status === 401) {
-                    navigate('/login');
+                    navigate('/signin');
                     return;
                 }
 
@@ -53,7 +53,7 @@ const Stocklist = () => {
             } catch (error) {
                 console.error("Error fetching initial data:", error);
                 if (error.message.includes('401')) {
-                    navigate('/login');
+                    navigate('/signin');
                 }
             }
         };
@@ -106,13 +106,7 @@ const Stocklist = () => {
                                         <td className="py-3 px-4 text-gray-300">{stock.id}</td>
                                         <td className="py-3 px-4 font-medium text-white">{stock.ticker}</td>
                                         <td><button type="button" onClick={() => {return(navigate(`/stockchart/${stock.ticker}`))}} className="w-24 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-3 py-2 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">trade</button></td>
-                                        <td 
-                                            id={`${stock.ticker}_price`} 
-                                            className="py-3 px-4 font-medium"
-                                            data-prev-value={stock.close}
-                                        >
-                                            {stock.close}
-                                        </td>
+                                        <td id={`${stock.ticker}_close`} className="py-3 px-4 text-gray-300">{stock.close}</td>
                                         <td id={`${stock.ticker}_open`} className="py-3 px-4 text-gray-300">{stock.open}</td>
                                         <td id={`${stock.ticker}_high`} className="py-3 px-4 text-gray-300">{stock.high}</td>
                                         <td id={`${stock.ticker}_low`} className="py-3 px-4 text-gray-300">{stock.low}</td>
