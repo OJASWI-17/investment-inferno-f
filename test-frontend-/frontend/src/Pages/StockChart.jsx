@@ -112,6 +112,7 @@ const StockChart = () => {
       if (!response.ok) throw new Error(data.message || "Trade failed");
   
       // Update UI
+      console.log(data, "tradedata");
       setUserBalance(Number(data.balance).toFixed(2));
       alert(`${action} successful: ${qty} ${ticker} at $${data.price?.toFixed(2) || 'market price'}`);
       

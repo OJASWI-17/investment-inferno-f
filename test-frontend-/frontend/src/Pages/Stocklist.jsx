@@ -20,11 +20,10 @@ const Stocklist = () => {
 
                 const response = await fetch(`${STOCKLIST_URL}`, {
                     method: "GET",
-                    credentials: 'include',   // This sends cookies
+                      // This sends cookies
                     headers: {
                         'Content-Type': 'application/json',
-                        "Authorization": `Bearer ${token}`,
-                        // 'X-CSRFToken': getCookie('csrftoken') || '',
+                        'Authorization': `Bearer ${token}`,
                     }
                 });
                 

@@ -267,11 +267,12 @@ export default function Signin() {
   const [error, setError] = useState(null);
   const [otpSent, setOtpSent] = useState(false); // ✅ Track OTP sent status
   const [resendDisabled, setResendDisabled] = useState(false); // ✅ Track resend cooldown
-  const [resendTimer, setResendTimer] = useState(30); // ✅ Resend timer countdown
+  const [resendTimer, setResendTimer] = useState(30);
+  const [token, setToken] = useState('') // ✅ Resend timer countdown
 
   // Check if the user is already logged in
   useEffect(() => {
-    const token = localStorage.getItem("jwt_token");
+    setToken(localStorage.getItem("jwt_token"));
     if (token) {
       // Optionally, validate the token with the server here
       navigate("/landing", { replace: true });

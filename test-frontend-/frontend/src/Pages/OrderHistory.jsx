@@ -25,6 +25,7 @@ export default function OrderHistory() {
             
             if (!response.ok) throw new Error('Network error')
             const data = await response.json()
+        console.log("Full response JSON:", data);
             setOrders(data.orders || [])
         } catch (error) {
             console.error('Error fetching orders:', error)
@@ -141,7 +142,7 @@ export default function OrderHistory() {
                                             <td className="px-6 py-4">${parseFloat(order.price).toFixed(2)}</td>
                                             <td className="px-6 py-4">
                                                 <span
-                                                    className={`rounded-full px-3 py-1 text-xs font-medium ${order.status === "COMPLETED" ? "bg-green-900/30 text-green-400" : "bg-blue-900/30 text-blue-400"}`}
+                                                    className={`rounded-full px-3 py-1 text-xs font-medium ${order.status === "Executed" ? "bg-green-900/30 text-green-400" : "bg-blue-900/30 text-blue-400"}`}
                                                 >
                                                     {order.status}
                                                 </span>

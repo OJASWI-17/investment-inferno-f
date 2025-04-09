@@ -337,7 +337,7 @@ export default function CandleStickChart({ stockSymbol, height, upColor, downCol
           </div>
         </div>
       )}
-      <div ref={chartContainerRef} className="w-full h-[500px]" />
+      <div ref={chartContainerRef} className="w-full h-[440px]" />
     </div>
   );
 }
