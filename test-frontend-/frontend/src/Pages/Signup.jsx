@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Heading from "../components/Heading";
 import InputComponent from "../components/InputComponent";
@@ -170,6 +170,9 @@ export default function Signup() {
             text="Submit"
             className="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           />
+          <Link to="/signin" className="text-gray-400 hover:text-gray-200 mt-4">
+            Already have an account? Sign In
+          </Link>
         </form>
       </div>
     </div>

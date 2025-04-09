@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -16,6 +17,12 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    function handleSignout() {
+        localStorage.removeItem('jwt_token'); // Remove the token from local storage
+        navigate('/signin'); 
+    }
+
 
     return (
         <nav
@@ -77,6 +84,15 @@ const Navbar = () => {
                     >
                         My Portfolio
                     </Link>
+
+
+                    <button 
+                    onClick={handleSignout}
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-medium px-4 py-2 rounded-full button-hover-effect flex items-center justify-center"
+                    >
+                        Sign Out
+
+                    </button>
                 </div>
             </div>
         </nav>
