@@ -5,6 +5,7 @@ import Heading from "../components/Heading";
 import InputComponent from "../components/InputComponent";
 import BG from "../assets/BgInferno.svg";
 const SIGNUP_URL = import.meta.env.VITE_SIGNUP;
+import Loader from "../components/Loader";
 
 
 
@@ -22,12 +23,14 @@ export default function Signup() {
   });
 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // Loading state
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };  
 
   const handleSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault(); // Prevent default form submission behavior
     
     // Reset error message
@@ -36,6 +39,7 @@ export default function Signup() {
     // Validation
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
+      setLoading(false); // Stop loading if there's an error
       return;
     }
 
@@ -75,7 +79,7 @@ export default function Signup() {
     } catch (err) {
       console.error("Registration error:", err);
       setError("Network error. Please try again later.");
-    }
+    }finally{setLoading(false)}
   };
 
   return (
@@ -83,6 +87,7 @@ export default function Signup() {
       className="flex items-center justify-center min-h-screen bg-cover"
       style={{ backgroundImage: `url(${BG})` }}
     >
+      {loading ?(<Loader></Loader>):(
       <div className="bg-gray-900 bg-opacity-90 p-8 rounded-lg shadow-lg text-center w-96 backdrop-blur-sm">
         <Heading heading="Sign Up" className="text-white" />
         {error && <p className="text-red-500">{error}</p>}
@@ -175,6 +180,7 @@ export default function Signup() {
           </Link>
         </form>
       </div>
+      )}
     </div>
   );
 }

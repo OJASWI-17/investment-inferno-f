@@ -33,7 +33,10 @@ export default function OrderHistory() {
     }
     
     // Initial fetch and set up polling
-    fetchOrders() 
+    useEffect(() => {
+        fetchOrders();
+       
+      }, []);
     
 
     // Filter and search orders

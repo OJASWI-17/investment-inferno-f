@@ -15,9 +15,7 @@ const Stocklist = () => {
     useEffect(() => {
         const fetchInitialData = async () => {
             try {
-                const queryString = window.location.search;
-                console.log("Query String oj:", queryString);
-
+                console.log(STOCKLIST_URL);
                 const response = await fetch(`${STOCKLIST_URL}`, {
                     method: "GET",
                       // This sends cookies
@@ -70,7 +68,7 @@ const Stocklist = () => {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-16">
                 <div className="glass-panel p-6 rounded-xl backdrop-blur-xl border border-gray-800">
-                    <div className="flex justify-between items-center mb-6">
+                    {/* <div className="flex justify-between items-center mb-6">
                         <h1 className="text-2xl font-bold text-white">Live Stock Tracker</h1>
                         <button 
                             onClick={() => navigate('/stock')}
@@ -78,7 +76,7 @@ const Stocklist = () => {
                         >
                             Buy/Sell
                         </button>
-                    </div>
+                    </div> */}
 
                     <div className="overflow-x-auto">
                         <table className="w-full border-collapse">

@@ -158,14 +158,14 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="flex items-center justify-end space-x-4">
+          {/* <div className="flex items-center justify-end space-x-4">
             <button className="rounded-lg bg-blue-500 px-6 py-3 font-medium text-white hover:bg-blue-600">
               Deposit
             </button>
             <button className="rounded-lg border border-gray-700 bg-transparent px-6 py-3 font-medium text-white hover:bg-gray-800">
               Withdraw
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -173,7 +173,7 @@ export default function Portfolio() {
         <h2 className="mb-6 text-xl font-bold text-white">Holdings</h2>
 
         <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex space-x-2 rounded-lg bg-gray-800 p-1 text-white">
+          {/* <div className="flex space-x-2 rounded-lg bg-gray-800 p-1 text-white">
             {["All Holdings", "Stocks", "ETFs"].map((tab) => (
               <button
                 key={tab}
@@ -183,7 +183,7 @@ export default function Portfolio() {
                 {tab}
               </button>
             ))}
-          </div>
+          </div> */}
 
           <div className="flex items-center space-x-2">
             <div className="relative">
@@ -213,7 +213,7 @@ export default function Portfolio() {
                 <th className="px-6 pb-4 text-white">Current Price</th>
                 <th className="px-6 pb-4 text-white">Total Value</th>
                 <th className="px-6 pb-4 text-white">Profit/Loss</th>
-                <th className="px-6 pb-4 text-white">Actions</th>
+                {/* <th className="px-6 pb-4 text-white">Actions</th> */}
               </tr>
             </thead>
             <tbody>
@@ -244,7 +244,7 @@ export default function Portfolio() {
                         </span>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    {/* <td className="px-6 py-4">
                       <div className="flex space-x-2">
                         <button className="rounded-lg bg-blue-500 px-4 py-1 text-sm font-medium text-white hover:bg-blue-600">
                           Buy
@@ -256,7 +256,7 @@ export default function Portfolio() {
                           <MoreVertical className="h-4 w-4" />
                         </button>
                       </div>
-                    </td>
+                    </td> */}
                   </tr>
                 ))
               ) : (

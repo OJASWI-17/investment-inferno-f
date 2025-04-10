@@ -254,6 +254,7 @@ import Button from "../components/Button";
 import Heading from "../components/Heading";
 import InputComponent from "../components/InputComponent";
 import BG from "../assets/BgInferno.svg";
+import Loader from "../components/Loader";
 
 const SIGNIN_URL = import.meta.env.VITE_SIGNIN;
 const VERIFY_OTP_URL = import.meta.env.VITE_OTP;
@@ -269,6 +270,7 @@ export default function Signin() {
   const [resendDisabled, setResendDisabled] = useState(false); // ✅ Track resend cooldown
   const [resendTimer, setResendTimer] = useState(30);
   const [token, setToken] = useState('') // ✅ Resend timer countdown
+  const [loading, setLoading] = useState(false); // ✅ Loading state
 
   // Check if the user is already logged in
   useEffect(() => {
@@ -281,11 +283,13 @@ export default function Signin() {
 
   const handleSubmit = async () => {
     setError(null);
+    setLoading(true); // Start loading
     console.log("Login attempt with:", username);
 
     // Basic validation
     if (!username || !password) {
       setError("Username and password are required");
+      setLoading(false); // Stop loading
       return;
     }
 
@@ -313,7 +317,7 @@ export default function Signin() {
     } catch (err) {
       console.error("Login error:", err);
       setError(err.message || "An error occurred during login");
-    }
+    }finally{setLoading(false)}
   };
 
   const handleOtpVerification = async () => {
@@ -359,10 +363,11 @@ export default function Signin() {
 
       // Clear OTP field on failure
       setOtp("");
-    }
+    }finally{setLoading(false)}
   };
 
   const handleResendOtp = async () => {
+    setLoading(true); // Start loading
     setError(null);
     setResendDisabled(true);
     startResendTimer();
@@ -390,10 +395,11 @@ export default function Signin() {
       console.error("Resend OTP error:", err);
       setError(err.message || "An error occurred while resending OTP");
       setResendDisabled(false);
-    }
+    }finally{setLoading(false)}
   };
 
   const startResendTimer = () => {
+    
     setResendTimer(30);
     const timer = setInterval(() => {
       setResendTimer((prev) => {
@@ -411,8 +417,9 @@ export default function Signin() {
     <div
       className="flex items-center justify-center min-h-screen bg-cover"
       style={{ backgroundImage: `url(${BG})` }}
-    >
+    >{loading ?(<Loader></Loader>):(
       <div className="bg-gray-900 bg-opacity-90 p-8 rounded-lg shadow-lg text-center w-96 backdrop-blur-sm">
+        
         <Heading heading="Sign In" className="text-white" />
         {error && <p className="text-red-500">{error}</p>}
         <div className="mt-4 space-y-4 flex flex-col items-center">
@@ -496,6 +503,7 @@ export default function Signin() {
           )}
         </div>
       </div>
+    )}
     </div>
   );
 }
